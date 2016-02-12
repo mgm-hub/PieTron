@@ -9,7 +9,6 @@ from MainController.FileCore.FileService import *
 class ActionService:
     the_observer_service = None
 
-
     def __init__(self, the_observer_service):
         if ActionService.the_observer_service is None:
             ActionService.the_observer_service = the_observer_service

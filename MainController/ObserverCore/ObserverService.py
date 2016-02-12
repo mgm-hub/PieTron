@@ -6,7 +6,6 @@ from MainController.ObserverCore.ActionService import ActionService
 class ObserverService:
     the_action_service = None
 
-
     def __init__(self):
         if ObserverService.the_action_service is None:
             ObserverService.the_action_service = ActionService(self)

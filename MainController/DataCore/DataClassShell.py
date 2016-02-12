@@ -1,7 +1,7 @@
 import json
 
 
-class DataClassShell():
+class DataClassShell:
     def __init__(self, dataClass):
         self.dataClass = dataClass
 
