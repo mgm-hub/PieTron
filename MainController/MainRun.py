@@ -1,8 +1,12 @@
+from RunCore.MainDevelopmentTests import MainDevelopmentTests
+
+
 __author__ = 'mmoscatello'
 
 
 def main_init():
-    pass
+    myMainDevelopmentTests = MainDevelopmentTests()
+    myMainDevelopmentTests.main_init()
 
 
 #####
