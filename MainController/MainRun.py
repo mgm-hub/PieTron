@@ -1,12 +1,9 @@
-from RunCore.MainDevelopmentTests import MainDevelopmentTests
-
-
-__author__ = 'mmoscatello'
+from RunCore.MainDevelopmentTestRunController import MainDevelopmentTestRunController
 
 
 def main_init():
-    myMainDevelopmentTests = MainDevelopmentTests()
-    myMainDevelopmentTests.main_init()
+    main_development_test_run_controller = MainDevelopmentTestRunController()
+    main_development_test_run_controller.main_init()
 
 
 #####
