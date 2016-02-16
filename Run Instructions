@@ -1,0 +1,28 @@
+
+----------------------
+----------------------
+----------------------
+----------------------
+----------------------
+----------------------
+--
+-- Run Instructions
+--
+----------------------
+----------------------
+----------------------
+----------------------
+----------------------
+----------------------
+
+
+Normal ::
+    source NAME/bin/activate
+
+My Example Directory
+    C:\Users\mmoscatello\Python_two
+
+Pycharm Terminal w/ it's virtual environment install
+    $ cd Users\mmoscatello\Python_two\Scripts
+    $ activate
+

@@ -1,0 +1,84 @@
+
+
+----------------------
+----------------------
+----------------------
+----------------------
+----------------------
+----------------------
+--
+-- Install Instructions
+--
+----------------------
+----------------------
+----------------------
+----------------------
+----------------------
+----------------------
+
+
+----------------------
+Selenium
+----------------------
+
+    $ pip install -U selenium
+
+----------------------
+Python
+----------------------
+
+    $ pip install boto
+    $ pip install paramiko
+    $ pip install locustio
+
+    $ STATIC_DEPS=true pip install lxml
+
+    $ pip install pyquery
+    $ pip install pyzmq
+
+----------------------
+Python - Ubuntu
+----------------------
+
+    $ sudo apt-get -y update
+    $ sudo apt-get -y install python-pip
+    $ sudo apt-get -y install python-dev
+    $ sudo apt-get -y install build-essential
+    $ sudo pip install virtualenvwrapper
+    $ sudo apt-get -y install postgresql postgresql-contrib
+
+----------------------
+Django - OSX
+----------------------
+
+    $ sudo pip install virtualenv
+    $ mkdir ~/myProject
+    $ cd ~/myProject
+    $ virtualenv myProjectenv
+
+    $ pip install django psycopg2
+
+
+----------------------
+PSQL
+----------------------
+
+    $ sudo apt-get update
+    $ sudo apt-get -y install python-pip python-dev libpq-dev postgresql postgresql-contrib
+    $ sudo su - postgres
+    $ psql
+    $ CREATE DATABASE myproject;
+    $ ALTER ROLE myprojectuser SET client_encoding TO 'utf8';
+    $ ALTER ROLE myprojectuser SET default_transaction_isolation TO 'read committed';
+    $ ALTER ROLE myprojectuser SET timezone TO 'UTC';
+    $ GRANT ALL PRIVILEGES ON DATABASE myproject TO myprojectuser;
+
+----------------------
+Key Pair
+----------------------
+
+    # sudo chmod 700 /Users/qatesting/.ssh/mykeypair.pem.txt 
+    # sudo ssh-add -K /Users/qatesting/.ssh/mykeypair.pem.txt
+
+    # chmod 700 mykeypair.pem.txt 
+    # ssh-add -K mykeypair.pem.txt

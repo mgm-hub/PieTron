@@ -5,8 +5,12 @@ from MainController.FileCore.FileService import FileService
 from MainController.DataCore.DataClassShell import DataClassShell
 from MainController.DataCore.DataClass import DataClass
 import json
-from MainController.ActionCore.RunProcess import RunProcess
-
+from MainController.ActionCore.RunService import RunService
+from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.common.keys import Keys
+import time
+from MainController.DriverCore.SeleniumDriver import SeleniumDriver
 
 
 class MainDevelopmentTestRunController:
@@ -26,12 +30,20 @@ class MainDevelopmentTestRunController:
 
     def main_init(self):
         Log.log(Constants.MAIN_INIT_MESSAGE)
-        # self.the_observer_service.TEST_obsererer_service_action()
         #self.TEST_read_file_as_string()
+
+        ############
+        ## Run Here
+        #my_run_service = RunService()
+        #my_run_service.main_init()
+
+        ############
+        ## Tests
+        #self.TEST_directory()
         #self.TEST_read_file_as_object()
         #self.TEST_write_to_new_file()
-        my_run_process = RunProcess()
-        my_run_process.main_init()
+        #self.TEST_selenium_build()
+        self.TEST_remote_driver()
 
 
 
@@ -41,6 +53,8 @@ class MainDevelopmentTestRunController:
     #####
     ##########
 
+    def TEST_directory(self):
+        Log.log(Constants.CHROME_DRIVER_LOCATION_WIN)
 
     def TEST_read_file_as_string(self):
         url_path = "Resources/test.json"
@@ -67,3 +81,23 @@ class MainDevelopmentTestRunController:
         new_data = FileService.convert_string_to_data_class_action(string_data)
         new_shell = DataClassShell(new_data)
         FileService.write_to_file(my_file, new_shell.to_json())
+
+
+    def TEST_selenium_build(self):
+        web_driver = webdriver.Firefox() # Get local session of firefox
+        web_driver.get("http://www.yahoo.com") # Load page
+        #assert "Yahoo!" in browser.title
+        elem = web_driver.find_element_by_name("p") # Find the query box
+        elem.send_keys("seleniumhq" + Keys.RETURN)
+        time.sleep(0.2) # Let the page load, will be added to the API
+        web_driver.close()
+
+
+    def TEST_remote_driver(self):
+        #browser = SeleniumDriver.get_firefox_webdriver()
+        #browser = SeleniumDriver.get_chrome_webdriver()
+        browser = SeleniumDriver.get_remote_webdriver()
+        browser.get("http://www.yahoo.com") # Load page
+
+
+

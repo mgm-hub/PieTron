@@ -29,9 +29,9 @@ class FileService:
 
     @staticmethod
     def create_file_at_location(directory_name, file_name):
-        file_name = directory_name + PATH_SLASH + file_name + Constants.JSON_TAG
+        file_location = directory_name + PATH_SLASH + file_name + Constants.JSON_TAG
         try:
-            open_file = open(file_name, 'w')
+            open_file = open(file_location, 'w')
             print(open_file)
             return open_file
         except Exception:
