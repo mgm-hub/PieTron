@@ -18,7 +18,7 @@ class SeleniumDriver:
 
     @staticmethod
     def get_remote_webdriver():
-        command_executor = 'http://127.0.0.1:4444/wd/hub'
+        command_executor = Constants.REMOTE_DRIVER_ADDRESS + ':' + Constants.REMOTE_DRIVER_PORT + '/wd/hub'
         desired_capabilities = {'platform': 'ANY', 'browserName': 'firefox', 'version': '', 'marionette': False, 'javascriptEnabled': True}
 
         return webdriver.Remote(command_executor=command_executor,
@@ -38,7 +38,6 @@ Server and the Hub are set
 
 Web page is set to 5555 and not to the hub at 4444
     http://localhost:5555/wd/hub/static/resource/hub.html
-
     http://localhost:4444/grid/console
     http://localhost:4444/wd/hub
     http://localhost:5555/wd/hub/static/resource/hub.html

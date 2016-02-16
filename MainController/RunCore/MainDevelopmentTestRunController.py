@@ -1,16 +1,16 @@
+import json
+import time
 from MainController.Utilities.Log import Log
 from MainController.Utilities.Constants import Constants
 from MainController.ObserverCore.ObserverService import ObserverService
 from MainController.FileCore.FileService import FileService
 from MainController.DataCore.DataClassShell import DataClassShell
 from MainController.DataCore.DataClass import DataClass
-import json
-from MainController.ActionCore.RunService import RunService
 from selenium import webdriver
-from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.keys import Keys
-import time
 from MainController.DriverCore.SeleniumDriver import SeleniumDriver
+from MainController.Utilities.HttpActions import HttpActions
+from MainController.DriverCore.GridActions import GridActions
 
 
 class MainDevelopmentTestRunController:
@@ -43,8 +43,8 @@ class MainDevelopmentTestRunController:
         #self.TEST_read_file_as_object()
         #self.TEST_write_to_new_file()
         #self.TEST_selenium_build()
-        self.TEST_remote_driver()
-
+        #self.TEST_remote_driver()
+        self.TEST_http_actions()
 
 
     ##########
@@ -100,4 +100,8 @@ class MainDevelopmentTestRunController:
         browser.get("http://www.yahoo.com") # Load page
 
 
+    def TEST_http_actions(self):
+        response_code = HttpActions.get_page_response_code('http://localhost:4444/grid/console/test')
+        is_grid_running = GridActions.is_grid_running()
+        Log.log(is_grid_running)
 

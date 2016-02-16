@@ -5,6 +5,11 @@ class Constants:
     def __init__(self):
         pass
 
+    ##########
+    #####
+    ##
+    #####
+    ##########
 
     CLASS_NAME = "CONSTANTS"
     IS_DEBUG = True
@@ -18,9 +23,26 @@ class Constants:
     SPACE_EMPTY = " "
     SPACE_COLOGNE = " :: "
 
+    ##########
+    #####
+    ##
+    #####
+    ##########
+
     FULL_PATH = os.path.realpath(__file__)
     DIRECTORY = (os.path.dirname(FULL_PATH))
     RESOURCE_LOCATION_NAME = "\Resources\\"
     RESOURCE_DIRECTORY = os.getcwd() + RESOURCE_LOCATION_NAME
     CHROME_WIN_FILE_NAME = "chromedriver.exe"
     CHROME_DRIVER_LOCATION_WIN = RESOURCE_DIRECTORY + CHROME_WIN_FILE_NAME
+
+    ##########
+    #####
+    ##
+    #####
+    ##########
+
+    REMOTE_DRIVER_ADDRESS = "http://127.0.0.1"
+    REMOTE_DRIVER_PORT = "4444"
+    REMOTE_GRID_STATUS_PAGE = 'http://localhost:4444/grid/console/test'
+    OK_RESPONSE_CODE = "200"
