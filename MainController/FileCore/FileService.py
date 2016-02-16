@@ -5,6 +5,8 @@ from MainController.Utilities.Log import Log
 from MainController.Utilities.Constants import Constants
 from MainController.DataCore.DataClassShell import DataClassShell
 from MainController.DataCore.DataClass import DataClass
+from MainController.DataCore.WebCodex import WebCodex
+from MainController.DataCore.WebCodexShell import WebCodexShell
 
 PATH_SLASH = os.sep
 
@@ -44,11 +46,28 @@ class FileService:
         except Exception:
             pass
 
+
+    ##########
+    #####
+    ## Types
+    #####
+    ##########
+
     @staticmethod
     def convert_string_to_data_class_action(string_data):
         try:
             new_data_shell = DataClassShell(**string_data)
             new_data_class = DataClass(**new_data_shell.get_data_class())
             return new_data_class
+        except Exception:
+            print("Can not convert string to class", Exception)
+
+
+    @staticmethod
+    def convert_string_to_web_codex_action(string_data):
+        try:
+            new_codex_shell = WebCodexShell(**string_data)
+            new_codex = WebCodex(**new_codex_shell.get_web_codex())
+            return new_codex
         except Exception:
             print("Can not convert string to class", Exception)

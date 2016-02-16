@@ -1,0 +1,40 @@
+{
+  "WebCodex": {
+    "theTestGenre": "test",
+    "theFileName": "RedditCodex.json",
+    "CodexMap" :
+    {
+      "REDDIT_MAIN_PAGE": "https://www.reddit.com",
+
+      "REDDIT_MAIN_PAGE_LOGIN": "https://www.reddit.com",
+
+      "reddit_login_user_name_field": "//*[@id='login_login-main']/input[2]",
+      "reddit_login_user_password_field": "//*[@id='login_login-main']/input[3]",
+      "reddit_login_submit_button": "//*[@id='login_login-main']/div[3]/button",
+
+      "reddit_sign_up_link" : "//*[@id='header-bottom-right']/span[1]/a",
+
+      "REDDIT_MAIN_PAGE_CONTENT": "https://www.reddit.com",
+
+      "reddit_page_content_first_listing" : "//*[@id='siteTable']/div[1]/div[2]/p[1]/a",
+      "reddit_page_content_first_listing_up_arrow" : "//*[@id='siteTable']/div[1]/div[1]/div[1]",
+      "reddit_page_content_first_listing_down_arrow" :  "//*[@id='siteTable']/div[1]/div[1]/div[5]",
+      "reddit_page_content_first_listing_vote_count" :  "//*[@id='siteTable']/div[1]/div[1]/div[3]",
+
+      "reddit_page_content_second_listing" : "//*[@id='siteTable']/div[2]/div[2]/p[1]/a",
+
+      "REDDIT_MAIN_PAGE_SIGN_UP_POP_UP": "https://www.reddit.com",
+
+      "reddit_sign_up_pop_up_user_name_text_field" : "//*[@id='user_reg']",
+      "reddit_sign_up_pop_up_password_text_field" : "//*[@id='passwd_reg']",
+      "reddit_sign_up_pop_up_verify_password_text_field" : "//*[@id='passwd2_reg']",
+      "reddit_sign_up_pop_up_email_text_field" : "//*[@id='email_reg']",
+      "reddit_sign_up_pop_up_sign_up_button" : "//*[@id='register-form']/div[7]/button"
+
+
+
+    }
+  }
+}
+
+

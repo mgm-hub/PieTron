@@ -1,0 +1,28 @@
+{
+  "WebCodex": {
+    "theTestGenre": "test",
+    "theFileName": "GoogleCodex.json",
+    "CodexMap" :
+    {
+      "GOOGLE_MAIN_PAGE" : "https://www.google.com",
+      "google_main_page_logo": "//*[@id='hplogo']",
+      "google_main_page_search_text_field": "//*[@id='lst-ib']",
+      "google_main_page_search_button":  "*[@id='tsf']/div[2]/div[3]/center/input[1]",
+      "google_main_page_gmail_button" : "//*[@id='gbw']/div/div/div[1]/div[1]/a",
+      "google_main_page_sign_in_button" : "//*[@id='gbw']/div/div/div[2]/div[3]/div",
+
+      "GOOGLE_SEARCH_RESULTS_PAGE" : "https://www.google.com/",
+      "google_search_results_search_button":  "//*[@id='sblsbb']/button",
+      "google_search_results_link_one" : "//*[@id='rso']/div[1]/div[1]/div/h3/a",
+
+      "GOOGLE_ACCOUNT_SIGN_IN_PAGE" : "https://accounts.google.com/ServiceLogin?hl=en&passive=true&continue=https://www.google.com/#identifier",
+      "google_account_sign_in_email_text_field" : "//*[@id='Email']",
+      "google_account_sign_in_next_button" : "//*[@id='next']"
+    }
+  }
+}
+
+
+
+
+

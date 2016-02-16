@@ -44,7 +44,8 @@ class MainDevelopmentTestRunController:
         #self.TEST_write_to_new_file()
         #self.TEST_selenium_build()
         #self.TEST_remote_driver()
-        self.TEST_http_actions()
+        #self.TEST_http_actions()
+        self.TEST_codex_object()
 
 
     ##########
@@ -104,4 +105,14 @@ class MainDevelopmentTestRunController:
         response_code = HttpActions.get_page_response_code('http://localhost:4444/grid/console/test')
         is_grid_running = GridActions.is_grid_running()
         Log.log(is_grid_running)
+
+
+    def TEST_codex_object(self):
+        url_path = "Resources/WebData/Codex/GoogleCodex.json"
+        string_data = FileService.get_object_from_path(url_path)
+        Log.log(string_data)
+        new_codex = FileService.convert_string_to_web_codex_action(string_data)
+        new_name = new_codex.get_file_name()
+        Log.log(new_name)
+        Log.log(new_codex.to_json())
 
