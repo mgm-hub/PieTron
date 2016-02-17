@@ -7,10 +7,12 @@ class CommandDataClass:
 
 
     def get_api_name(self):
+        # print("CommandDataClass.api_name :: " + self.api_name)
         return self.api_name
 
 
     def get_api_value(self):
+        # print("CommandDataClass.api_value " + self.api_value)
         return self.api_value
 
 

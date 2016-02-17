@@ -15,6 +15,10 @@ from MainController.Utilities.HttpActions import HttpActions
 from MainController.DriverCore.GridActions import GridActions
 from MainController.DataCore.SharedData import SharedData
 from MainController.Utilities.TextActions import TextActions
+from MainController.DataCore.CommandDataObject import CommandDataObject
+from MainController.DataCore.CommandDataClass import CommandDataClass
+
+from MainController.CommandCore.CommandProcessActionClass import CommandProcessActionClass
 
 
 class MainDevelopmentTestRunController:
@@ -56,7 +60,8 @@ class MainDevelopmentTestRunController:
         #self.TEST_suite_data()
         #self.TEST_regex_fix()
         #self.TEST_shared_data()
-        self.TEST_run_suite_by_name()
+        #self.TEST_run_suite_by_name()
+        self.TEST_test_run()
 
     ##########
     #####
@@ -194,6 +199,19 @@ class MainDevelopmentTestRunController:
         first_suite = suite_data_array[test_number]
         my_suite_name = first_suite.get_suite_name()
         print(my_suite_name)
+
+    def TEST_test_run(self):
+        first_class = CommandDataClass("COMMENT", "one")
+        second_class = CommandDataClass("CONSOLE", "two")
+        third_class = CommandDataClass("clickElement", "element")
+        command_data_class_array = [first_class, second_class, third_class]
+
+        my_command_data_object = CommandDataObject(command_data_class_array)
+        my_command_data_object.set_current_command_data(third_class)
+
+        myCommandProcessActionClass = CommandProcessActionClass()
+        myCommandProcessActionClass.api_command_consumption(my_command_data_object)
+
 
 
 

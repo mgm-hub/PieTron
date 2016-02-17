@@ -16,12 +16,12 @@ class CommandDataObject:
     ##########
 
 
-    def get_api_name(self):
+    def get_current_command_api_name(self):
         if self.current_command_data is not None:
             return self.current_command_data.get_api_name()
 
 
-    def get_api_value(self):
+    def get_current_command_api_value(self):
         if self.current_command_data is not None:
             return self.current_command_data.get_api_value()
 

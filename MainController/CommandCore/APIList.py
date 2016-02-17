@@ -1,7 +1,9 @@
 
 
 API_LIST = ["COMMENT",
-            "CONSOLE"]
+            "CONSOLE",
+            "clickElement"
+            ]
 
 
 class APIList:
