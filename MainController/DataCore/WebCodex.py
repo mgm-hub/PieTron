@@ -7,11 +7,14 @@ class WebCodex:
         self.theFileName = theFileName
         self.CodexMap = CodexMap
 
+
     def get_codex_map(self):
         return self.CodexMap
 
+
     def get_file_name(self):
         return self.theFileName
+
 
     def print_object(self):
         print("theTestGenre :: " + self.theTestGenre)

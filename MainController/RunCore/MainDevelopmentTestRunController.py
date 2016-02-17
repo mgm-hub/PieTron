@@ -51,6 +51,7 @@ class MainDevelopmentTestRunController:
         #self.TEST_codex_object()
         #self.TEST_directory_lists()
         #self.TEST_shared_data()
+        #self.TEST_suite_directory()
         self.TEST_suite_data()
 
 
@@ -63,6 +64,7 @@ class MainDevelopmentTestRunController:
 
     def TEST_directory(self):
         Log.log(Constants.CHROME_DRIVER_LOCATION_WIN)
+
 
     def TEST_read_file_as_string(self):
         url_path = "Resources/test.json"
@@ -133,10 +135,44 @@ class MainDevelopmentTestRunController:
     def TEST_shared_data(self):
         SharedData.build_codex_data()
 
-    def TEST_suite_data(self):
+
+    def TEST_suite_data_directory(self):
         url_path = "Resources/WebData/SuiteFileGroups"
         directory_info_list = FileService.get_files_in_directory(url_path)
         updated_list = TextActions.append_prefix_to_string_list(url_path, directory_info_list)
         Log.log(updated_list)
         combined_list = FileService.get_joined_files_from_combined_directory_list(updated_list)
         Log.log(combined_list)
+
+
+    def TEST_suite_data(self):
+        url_path = "Resources/WebData/SuiteFileGroups/GoogleSuite/Google_Test_Search.json"
+        string_data = FileService.get_object_from_path(url_path)
+        #Log.log(string_data)
+        suite_shell = FileService.convert_string_to_suite_file(string_data)
+        #Log.log(suite_shell.to_json())
+        #file_name = suite_shell.fileName
+        #Log.log(file_name)
+
+        suite_data = FileService.get_suite_data_array_from_shell(suite_shell)
+        #Log.log(str(suite_data))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

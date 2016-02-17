@@ -7,6 +7,10 @@ from MainController.DataCore.DataClassShell import DataClassShell
 from MainController.DataCore.DataClass import DataClass
 from MainController.DataCore.WebCodex import WebCodex
 from MainController.DataCore.WebCodexShell import WebCodexShell
+from MainController.DataCore.SuiteFileObjectContent import SuiteFileObjectContent
+from MainController.DataCore.SuiteFileObjectShell import SuiteFileObjectShell
+from MainController.DataCore.SuiteFileObject import SuiteFileObject
+
 
 PATH_SLASH = os.sep
 
@@ -72,6 +76,24 @@ class FileService:
         except StandardError:
             print("Can not convert string to class", Exception)
 
+
+    @staticmethod
+    def convert_string_to_suite_file(string_data):
+        try:
+            new_suite_file_content = SuiteFileObjectContent(**string_data)
+            new_suite_file_shell = SuiteFileObjectShell(**new_suite_file_content.get_suite_file_object())
+            return new_suite_file_shell
+        except StandardError:
+            print("Can not convert string to class", Exception)
+
+    @staticmethod
+    def get_suite_data_array_from_shell(suite_file_shell):
+        try:
+            #Log.log(str(suite_file_shell))
+            [suite_file_data] = SuiteFileObject(**suite_file_shell.get_suite_file_object_array())
+            return suite_file_data
+        except StandardError:
+            print("Can not convert string to class", Exception)
 
     ##########
     #####

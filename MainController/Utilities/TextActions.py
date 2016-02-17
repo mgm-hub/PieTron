@@ -22,6 +22,13 @@ class TextActions:
             return None
 
     @staticmethod
+    def convert_string_to_array(my_array):
+        try:
+            return str(my_array).split(',')
+        except StandardError:
+            return None
+
+    @staticmethod
     def append_prefix_to_string_list(my_string, my_list):
         new_string_list = []
         for my_string_part in my_list:
