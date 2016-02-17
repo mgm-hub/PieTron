@@ -18,7 +18,6 @@ class Constants:
     OBSERVER_SERVICE_INIT_MESSAGE = "Action Service Started"
     MESSAGE = "MESSAGE"
     TEST = "TEST"
-    JSON_TAG = ".json"
     RUN_ERROR = "Method Could Not Be Found"
     SPACE_EMPTY = " "
     SPACE_COLOGNE = " :: "
@@ -31,10 +30,30 @@ class Constants:
 
     FULL_PATH = os.path.realpath(__file__)
     DIRECTORY = (os.path.dirname(FULL_PATH))
-    RESOURCE_LOCATION_NAME = "\Resources\\"
-    RESOURCE_DIRECTORY = os.getcwd() + RESOURCE_LOCATION_NAME
+    PROJECT_DIRECTORY = os.getcwd()
+    PATH_SLASH = "/"
+    JSON_TAG = ".json"
+
+    ##########
+    #####
+    ##
+    #####
+    ##########
+
+    RESOURCE_NAME = "Resources"
+    RESOURCE_DIRECTORY = PROJECT_DIRECTORY + PATH_SLASH + RESOURCE_NAME + PATH_SLASH
     CHROME_WIN_FILE_NAME = "chromedriver.exe"
     CHROME_DRIVER_LOCATION_WIN = RESOURCE_DIRECTORY + CHROME_WIN_FILE_NAME
+
+    ##########
+    #####
+    ## Codex
+    #####
+    ##########
+
+    WEB_DATA_NAME = "WebData"
+    Codex_NAME = "Codex"
+    CODEX_DIRECTORY = RESOURCE_NAME + PATH_SLASH + WEB_DATA_NAME + PATH_SLASH + Codex_NAME
 
     ##########
     #####

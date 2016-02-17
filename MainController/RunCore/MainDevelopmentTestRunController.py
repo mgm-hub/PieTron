@@ -1,5 +1,6 @@
 import json
 import time
+import os
 from MainController.Utilities.Log import Log
 from MainController.Utilities.Constants import Constants
 from MainController.ObserverCore.ObserverService import ObserverService
@@ -11,6 +12,7 @@ from selenium.webdriver.common.keys import Keys
 from MainController.DriverCore.SeleniumDriver import SeleniumDriver
 from MainController.Utilities.HttpActions import HttpActions
 from MainController.DriverCore.GridActions import GridActions
+from MainController.DataCore.SharedData import SharedData
 
 
 class MainDevelopmentTestRunController:
@@ -45,7 +47,9 @@ class MainDevelopmentTestRunController:
         #self.TEST_selenium_build()
         #self.TEST_remote_driver()
         #self.TEST_http_actions()
-        self.TEST_codex_object()
+        #self.TEST_codex_object()
+        #self.TEST_directory_lists()
+        self.TEST_shared_data()
 
 
     ##########
@@ -53,6 +57,7 @@ class MainDevelopmentTestRunController:
     ## Tests
     #####
     ##########
+
 
     def TEST_directory(self):
         Log.log(Constants.CHROME_DRIVER_LOCATION_WIN)
@@ -116,3 +121,12 @@ class MainDevelopmentTestRunController:
         Log.log(new_name)
         Log.log(new_codex.to_json())
 
+
+    def TEST_directory_lists(self):
+        url_path = "Resources/WebData/Codex"
+        directory_info = os.listdir(url_path)
+        Log.log(directory_info)
+
+
+    def TEST_shared_data(self):
+        SharedData.build_codex_data()

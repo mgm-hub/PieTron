@@ -26,7 +26,7 @@ class FileService:
         try:
             input_var = FileService.path_reader(url_path)
             return input_var
-        except Exception:
+        except StandardError:
             print("Unexpected error:", sys.exc_info()[0])
 
     @staticmethod
@@ -36,14 +36,14 @@ class FileService:
             open_file = open(file_location, 'w')
             print(open_file)
             return open_file
-        except Exception:
+        except StandardError:
             print("Unexpected error:", sys.exc_info()[0])
 
     @staticmethod
     def write_to_file(my_file, my_string):
         try:
             my_file.write(my_string)
-        except Exception:
+        except StandardError:
             pass
 
 
@@ -59,7 +59,7 @@ class FileService:
             new_data_shell = DataClassShell(**string_data)
             new_data_class = DataClass(**new_data_shell.get_data_class())
             return new_data_class
-        except Exception:
+        except StandardError:
             print("Can not convert string to class", Exception)
 
 
@@ -69,5 +69,25 @@ class FileService:
             new_codex_shell = WebCodexShell(**string_data)
             new_codex = WebCodex(**new_codex_shell.get_web_codex())
             return new_codex
-        except Exception:
+        except StandardError:
             print("Can not convert string to class", Exception)
+
+
+    ##########
+    #####
+    ## Directory
+    #####
+    ##########
+
+    @staticmethod
+    def get_files_in_directory(url_path):
+        try:
+            return os.listdir(url_path)
+        except StandardError:
+            return None
+
+
+
+
+
+
