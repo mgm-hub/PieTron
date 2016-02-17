@@ -52,8 +52,11 @@ class Constants:
     ##########
 
     WEB_DATA_NAME = "WebData"
-    Codex_NAME = "Codex"
-    CODEX_DIRECTORY = RESOURCE_NAME + PATH_SLASH + WEB_DATA_NAME + PATH_SLASH + Codex_NAME
+    CODEX_NAME = "Codex"
+    CODEX_DIRECTORY = RESOURCE_NAME + PATH_SLASH + WEB_DATA_NAME + PATH_SLASH + CODEX_NAME
+
+    SUITE_NAME = "SuiteFileGroups"
+    SUITE_DIRECTORY = RESOURCE_NAME + PATH_SLASH + WEB_DATA_NAME + PATH_SLASH + SUITE_NAME
 
     ##########
     #####

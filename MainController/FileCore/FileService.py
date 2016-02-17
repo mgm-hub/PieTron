@@ -134,6 +134,12 @@ class FileService:
 
         return new_file_list
 
+    ##########
+    #####
+    ## Read / Write
+    #####
+    ##########
+
     @staticmethod
     def read_file_at_location(url_path):
         try:
@@ -150,6 +156,16 @@ class FileService:
             my_file.close()
         except StandardError:
             return None
+
+    ##########
+    #####
+    ## Directory
+    #####
+    ##########
+
+    @staticmethod
+    def build_path_for_single_suite(group_name, file_name):
+        return Constants.SUITE_DIRECTORY + Constants.PATH_SLASH + group_name + Constants.PATH_SLASH + file_name
 
 
 

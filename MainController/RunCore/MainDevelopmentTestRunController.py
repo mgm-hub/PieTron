@@ -51,11 +51,12 @@ class MainDevelopmentTestRunController:
         #self.TEST_http_actions()
         #self.TEST_codex_object()
         #self.TEST_directory_lists()
-        #self.TEST_shared_data()
+        #self.TEST_shared_data_codex_test()
         #self.TEST_suite_directory()
         #self.TEST_suite_data()
-        self.TEST_regex_fix()
-
+        #self.TEST_regex_fix()
+        #self.TEST_shared_data()
+        self.TEST_run_suite_by_name()
 
     ##########
     #####
@@ -134,7 +135,7 @@ class MainDevelopmentTestRunController:
         Log.log(directory_info)
 
 
-    def TEST_shared_data(self):
+    def TEST_shared_data_codex_test(self):
         SharedData.build_codex_data()
 
 
@@ -171,10 +172,27 @@ class MainDevelopmentTestRunController:
         FileService.write_file_at_location(my_path, my_array)
 
 
+    def TEST_shared_data(self):
+        pass
+        suite_files = SharedData.get_test_suite_directory_files()
+        codex_files = SharedData.get_codex_directory_files()
+        print(codex_files)
+        suite_data = SharedData.get_suite_data()
+        first_suite = suite_data[0]
+        my_suite_name = first_suite.get_suite_name()
+        print(my_suite_name)
 
-
-
-
+    def TEST_run_suite_by_name(self):
+        #group_name = "GoogleSuite"
+        #file_name = "Google_Test_Search.json"
+        group_name = "RedditSuite"
+        file_name = "Reddit_Test_Login.json"
+        test_number = 0
+        suite_shell = SharedData.get_suite_shell_from_group_and_file(group_name, file_name)
+        suite_data_array = FileService.get_suite_data_array_from_shell(suite_shell)
+        first_suite = suite_data_array[test_number]
+        my_suite_name = first_suite.get_suite_name()
+        print(my_suite_name)
 
 
 

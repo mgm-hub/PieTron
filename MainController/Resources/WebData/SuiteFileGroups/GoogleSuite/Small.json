@@ -15,11 +15,14 @@
         "hasOverRideURL" : "no",
         "commandDataClassList":
           {
-            "5": ["COMMENT","--------------Google Main Page--------------"],
+            "0": ["COMMENT","--------------Google Main Page--------------"],
             "1": ["CONSOLE","Test Started"],
             "2": ["elementIsVisible","google_main_page_logo"],
             "3": ["writeToElement","google_main_page_search_text_field $$ google"],
-            "4": ["wait","300"]
+            "4": ["wait","300"],
+            "15": ["wait","5000"],
+            "16": ["finished"," --"],
+            "17": ["CONSOLE","Test Finished"]
           }
       }
     ]

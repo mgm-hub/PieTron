@@ -1,42 +1,46 @@
 {
   "SuiteFileObject": {
-    "group": "GoogleSuite",
-    "fileName": "Google_Test_Search.json",
+    "group": "RedditSuite",
+    "fileName": "Reddit_Test_Login.json",
     "fileID": "00",
-    "description" : "api test",
+    "description" : "showcase",
     "suiteFileObjectArray": [
       {
         "testID": "00",
-        "suiteName":"Google APITest 01",
-        "baseURL" : "http://www.google.com/",
-        "overRideURL" : "http://www.google.com/",
-        "description" : "APITest",
-        "apiList" : "COMMENT CONSOLE wait Finished Test",
+        "suiteName":"Reddit Login Example APITest 01",
+        "baseURL" : "http://www.reddit.com/",
+        "overRideURL" : "none",
+        "description" : "showcase",
+        "apiList" : " --",
         "hasOverRideURL" : "no",
         "commandDataClassList":
           {
-            "0": ["COMMENT","--------------Google Main Page--------------"],
+            "0": ["COMMENT","--------------Main Page--------------"],
             "1": ["CONSOLE","Test Started"],
-            "2": ["elementIsVisible","google_main_page_logo"],
-            "3": ["writeToElement","google_main_page_search_text_field $$ google"],
-            "4": ["wait","300"],
-            "5": ["clickElement","google_search_results_search_button"],
-            "6": ["wait","300"],
-            "7": ["clickElement","google_search_results_link_one"],
 
-            "8": ["wait","300"],
-            "9": ["writeToElement","google_main_page_search_text_field $$ yahoo.com"],
-            "10": ["wait","300"],
-            "11": ["clickElement","google_search_results_link_one"],
-            "12": ["checkTestCaseWithID","0001"],
+            "2": ["COMMENT","--------------Main Page - Action - User Login--------------"],
+            "3": ["writeToElement","reddit_login_user_name_field $$ text"],
+            "4": ["writeToElement","reddit_login_user_password_field $$ text"],
+            "5": ["wait","1000"],
+            "6": ["clickElement","reddit_login_submit_button"],
 
-            "13": ["failTest","Fail"],
-            "14": ["checkTestCaseWithID","0002"],
+            "7": ["wait","1000"],
+            "8": ["clearTextField","reddit_login_user_name_field"],
+            "9": ["clearTextField","reddit_login_user_password_field"],
+            "10": ["wait","1000"],
+
+            "11": ["writeToElement","reddit_login_user_name_field $$ test_example_net"],
+            "12": ["writeToElement","reddit_login_user_password_field $$ 123456"],
+            "13": ["wait","3000"],
+            "14": ["clickElement","reddit_login_submit_button"],
+            "15": ["wait","3000"],
+            "16": ["clickElement","reddit_page_content_first_listing_up_arrow"],
+            "17": ["clickElement","reddit_page_content_first_listing_down_arrow"],
+            "18": ["clickElement","reddit_page_content_first_listing"],
 
 
-            "15": ["wait","5000"],
-            "16": ["finished"," --"],
-            "17": ["CONSOLE","Test Finished"]
+            "27": ["wait","5000"],
+            "28": ["finished"," --"]
           }
       }
     ]
