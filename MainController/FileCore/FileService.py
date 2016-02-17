@@ -134,6 +134,23 @@ class FileService:
 
         return new_file_list
 
+    @staticmethod
+    def read_file_at_location(url_path):
+        try:
+            return open(url_path, 'r')
+        except StandardError:
+            return None
+
+    @staticmethod
+    def write_file_at_location(url_path, my_array):
+        try:
+            my_file = open(url_path, 'w')
+            for line in my_array:
+                my_file.write(line)
+            my_file.close()
+        except StandardError:
+            return None
+
 
 
 

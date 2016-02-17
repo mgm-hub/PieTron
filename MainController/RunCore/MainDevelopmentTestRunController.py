@@ -165,39 +165,11 @@ class MainDevelopmentTestRunController:
 
     def TEST_regex_fix(self):
         url_path = "Resources/WebData/SuiteFileGroups/GoogleSuite/Small.json"
-        f1 = open(url_path, 'r')
+        my_file = FileService.read_file_at_location(url_path)
+        my_array = TextActions.regex_fixer(my_file)
+        my_path = "Resources/WebData/SuiteFileGroups/GoogleSuite/Updated.json"
+        FileService.write_file_at_location(my_path, my_array)
 
-        KEY_TERM = '\"commandDataClassList\"'
-        is_initial_key = re.compile(KEY_TERM)
-
-        REGEX_NUMBER = '\"[0-9]+\":'
-        has_a_number = re.compile(REGEX_NUMBER)
-
-        EMPTY_LINE = 'S^'
-        has_empty_line = re.compile(EMPTY_LINE)
-
-        my_count = 0
-        my_array = []
-        for line in f1:
-            if re.search(is_initial_key, line):
-                my_count = 0
-
-            if re.search(has_empty_line, line):
-                pass
-
-            if re.search(has_a_number, line):
-                my_expected_count = '\"' + str(my_count) + '\":'
-                my_expected_count_line = re.compile(my_expected_count)
-                if re.search(my_expected_count_line, line):
-                    print (line)
-                my_count += 1
-            else:
-                pass
-
-            print (my_count)
-
-    def regex_fixer(self):
-        pass
 
 
 
