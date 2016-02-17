@@ -78,7 +78,7 @@ class FileService:
 
 
     @staticmethod
-    def convert_string_to_suite_file(string_data):
+    def convert_string_to_suite_file_content(string_data):
         try:
             new_suite_file_content = SuiteFileObjectContent(**string_data)
             new_suite_file_shell = SuiteFileObjectShell(**new_suite_file_content.get_suite_file_object())
@@ -89,9 +89,17 @@ class FileService:
     @staticmethod
     def get_suite_data_array_from_shell(suite_file_shell):
         try:
-            #Log.log(str(suite_file_shell))
-            [suite_file_data] = SuiteFileObject(**suite_file_shell.get_suite_file_object_array())
-            return suite_file_data
+            my_combined_list = suite_file_shell.get_suite_file_object_array()
+            ##
+            ## Hack Here
+            my_list_data = my_combined_list[0]
+            ## Hack Here
+            ##
+            my_array = []
+            for my_suite_file_object in my_list_data:
+                suite_file_data = SuiteFileObject(**my_suite_file_object)
+                my_array.append(suite_file_data)
+            return my_array
         except StandardError:
             print("Can not convert string to class", Exception)
 

@@ -1,6 +1,7 @@
 import json
 import time
 import os
+import re
 from MainController.Utilities.Log import Log
 from MainController.Utilities.Constants import Constants
 from MainController.ObserverCore.ObserverService import ObserverService
@@ -52,7 +53,8 @@ class MainDevelopmentTestRunController:
         #self.TEST_directory_lists()
         #self.TEST_shared_data()
         #self.TEST_suite_directory()
-        self.TEST_suite_data()
+        #self.TEST_suite_data()
+        self.TEST_regex_fix()
 
 
     ##########
@@ -149,18 +151,53 @@ class MainDevelopmentTestRunController:
         url_path = "Resources/WebData/SuiteFileGroups/GoogleSuite/Google_Test_Search.json"
         string_data = FileService.get_object_from_path(url_path)
         #Log.log(string_data)
-        suite_shell = FileService.convert_string_to_suite_file(string_data)
+        suite_shell = FileService.convert_string_to_suite_file_content(string_data)
         #Log.log(suite_shell.to_json())
         #file_name = suite_shell.fileName
         #Log.log(file_name)
 
-        suite_data = FileService.get_suite_data_array_from_shell(suite_shell)
+        suite_data_array = FileService.get_suite_data_array_from_shell(suite_shell)
+        my_test_data = suite_data_array[0]
+        my_suite_name = my_test_data.get_suite_name()
+        print(my_suite_name)
         #Log.log(str(suite_data))
 
 
+    def TEST_regex_fix(self):
+        url_path = "Resources/WebData/SuiteFileGroups/GoogleSuite/Small.json"
+        f1 = open(url_path, 'r')
 
+        KEY_TERM = '\"commandDataClassList\"'
+        is_initial_key = re.compile(KEY_TERM)
 
+        REGEX_NUMBER = '\"[0-9]+\":'
+        has_a_number = re.compile(REGEX_NUMBER)
 
+        EMPTY_LINE = 'S^'
+        has_empty_line = re.compile(EMPTY_LINE)
+
+        my_count = 0
+        my_array = []
+        for line in f1:
+            if re.search(is_initial_key, line):
+                my_count = 0
+
+            if re.search(has_empty_line, line):
+                pass
+
+            if re.search(has_a_number, line):
+                my_expected_count = '\"' + str(my_count) + '\":'
+                my_expected_count_line = re.compile(my_expected_count)
+                if re.search(my_expected_count_line, line):
+                    print (line)
+                my_count += 1
+            else:
+                pass
+
+            print (my_count)
+
+    def regex_fixer(self):
+        pass
 
 
 

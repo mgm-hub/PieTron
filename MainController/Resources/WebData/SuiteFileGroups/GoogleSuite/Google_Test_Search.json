@@ -5,8 +5,6 @@
     "fileID": "00",
     "description" : "api test",
     "suiteFileObjectArray": [
-
-
       {
         "testID": "00",
         "suiteName":"Google APITest 01",
@@ -25,25 +23,19 @@
             "5": ["clickElement","google_search_results_search_button"],
             "6": ["wait","300"],
             "7": ["clickElement","google_search_results_link_one"],
-
             "8": ["wait","300"],
             "9": ["writeToElement","google_main_page_search_text_field $$ yahoo.com"],
             "10": ["wait","300"],
             "11": ["clickElement","google_search_results_link_one"],
             "12": ["checkTestCaseWithID","0001"],
-
             "13": ["failTest","Fail"],
             "14": ["checkTestCaseWithID","0002"],
-
-
             "15": ["wait","5000"],
             "16": ["finished"," --"],
             "17": ["CONSOLE","Test Finished"]
-
-          }
+            }
       },
-
-        {
+      {
         "testID": "00",
         "suiteName":"Google APITest 01",
         "baseURL" : "http://www.google.com/",
@@ -61,25 +53,18 @@
             "5": ["clickElement","google_search_results_search_button"],
             "6": ["wait","300"],
             "7": ["clickElement","google_search_results_link_one"],
-
             "8": ["wait","300"],
             "9": ["writeToElement","google_main_page_search_text_field $$ yahoo.com"],
             "10": ["wait","300"],
             "11": ["clickElement","google_search_results_link_one"],
             "12": ["checkTestCaseWithID","0001"],
-
             "13": ["failTest","Fail"],
             "14": ["checkTestCaseWithID","0002"],
-
-
             "15": ["wait","5000"],
             "16": ["finished"," --"],
             "17": ["CONSOLE","Test Finished"]
-
           }
       }
-
-
     ]
   }
 }
