@@ -22,12 +22,14 @@ class TextActions:
         except StandardError:
             return None
 
+
     @staticmethod
     def convert_string_to_array(my_array):
         try:
             return str(my_array).split(',')
         except StandardError:
             return None
+
 
     @staticmethod
     def append_prefix_to_string_list(my_string, my_list):
@@ -36,6 +38,7 @@ class TextActions:
             new_string_list.append(my_string + Constants.PATH_SLASH + my_string_part)
         return new_string_list
 
+
     @staticmethod
     def combine_directories_from_list(my_list):
         new_file_list = []
@@ -43,6 +46,7 @@ class TextActions:
             directory_info_list = os.listdir(my_directory)
             new_file_list.append(directory_info_list)
         return new_file_list
+
 
     @staticmethod
     def regex_fixer(my_file):

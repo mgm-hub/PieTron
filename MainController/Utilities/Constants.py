@@ -68,3 +68,16 @@ class Constants:
     REMOTE_DRIVER_PORT = "4444"
     REMOTE_GRID_STATUS_PAGE = 'http://localhost:4444/grid/console/test'
     OK_RESPONSE_CODE = "200"
+
+    ##########
+    #####
+    ##
+    #####
+    ##########
+
+    STARTING_TEST = "Starting Test"
+
+
+    COMMAND_CASE_ERROR = "Command Case Not Covered"
+
+
