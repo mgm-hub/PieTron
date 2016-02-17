@@ -13,6 +13,7 @@ from MainController.DriverCore.SeleniumDriver import SeleniumDriver
 from MainController.Utilities.HttpActions import HttpActions
 from MainController.DriverCore.GridActions import GridActions
 from MainController.DataCore.SharedData import SharedData
+from MainController.Utilities.TextActions import TextActions
 
 
 class MainDevelopmentTestRunController:
@@ -49,7 +50,8 @@ class MainDevelopmentTestRunController:
         #self.TEST_http_actions()
         #self.TEST_codex_object()
         #self.TEST_directory_lists()
-        self.TEST_shared_data()
+        #self.TEST_shared_data()
+        self.TEST_suite_data()
 
 
     ##########
@@ -130,3 +132,11 @@ class MainDevelopmentTestRunController:
 
     def TEST_shared_data(self):
         SharedData.build_codex_data()
+
+    def TEST_suite_data(self):
+        url_path = "Resources/WebData/SuiteFileGroups"
+        directory_info_list = FileService.get_files_in_directory(url_path)
+        updated_list = TextActions.append_prefix_to_string_list(url_path, directory_info_list)
+        Log.log(updated_list)
+        combined_list = FileService.get_joined_files_from_combined_directory_list(updated_list)
+        Log.log(combined_list)

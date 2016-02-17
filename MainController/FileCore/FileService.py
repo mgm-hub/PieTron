@@ -86,7 +86,23 @@ class FileService:
         except StandardError:
             return None
 
+    @staticmethod
+    def get_files_from_combined_directory_list(my_list):
+        new_file_list = []
+        for my_directory in my_list:
+            directory_info_list = os.listdir(my_directory)
+            new_file_list.append(directory_info_list)
+        return new_file_list
 
+    @staticmethod
+    def get_joined_files_from_combined_directory_list(my_list):
+        new_file_list = []
+        for my_directory in my_list:
+            directory_info_list = os.listdir(my_directory)
+            for new_list in directory_info_list:
+                new_file_list.append(my_directory + Constants.PATH_SLASH + new_list)
+
+        return new_file_list
 
 
 
