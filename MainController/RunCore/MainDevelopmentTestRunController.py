@@ -20,6 +20,13 @@ from MainController.DataCore.CommandDataObject import CommandDataObject
 from MainController.DataCore.CommandDataClass import CommandDataClass
 from MainController.CommandCore.CommandProcessActionClass import CommandProcessActionClass
 
+from MainController.CommandCore.CommandProcessRun import CommandProcessRun
+from MainController.CommandCore.MainProcessContextObject import MainProcessContextObject
+from MainController.DataCore.MainProcessSharedDataGroup import MainProcessSharedDataGroup
+
+
+
+
 
 class MainDevelopmentTestRunController:
     the_observer_service = None
@@ -63,7 +70,9 @@ class MainDevelopmentTestRunController:
         #self.TEST_run_suite_by_name()
         #self.TEST_test_run_basic()
         #self.TEST_test_run_advanced()
-        self.TEST_data_converison()
+        #self.TEST_data_converison()
+        #self.TEST_data_converison_advanced()
+        self.TEST_run_complete_action()
 
 
     ##########
@@ -243,8 +252,23 @@ class MainDevelopmentTestRunController:
         #print(command_data_class_array[0].api_name)
 
 
+    def TEST_data_converison_advanced(self):
+        group_name = "RedditSuite"
+        file_name = "Reddit_Test_Login.json"
+        test_number = 0
+        suite_shell = SharedDataActions.get_suite_shell_from_group_and_file(group_name, file_name)
+        my_suiteFileObjectArray = suite_shell.get_suite_file_object_at_index(0)
+        print(my_suiteFileObjectArray.description)
 
 
+    def TEST_run_complete_action(self):
+        pass
+        my_ObserverService = ObserverService()
+        my_MainProcessSharedDataGroup = MainProcessSharedDataGroup()
+        my_MainProcessContextObject = MainProcessContextObject(my_ObserverService, my_MainProcessSharedDataGroup)
+
+        my_CommandProcessRun = CommandProcessRun(my_MainProcessContextObject)
+        my_CommandProcessRun.run_action_init()
 
 
 

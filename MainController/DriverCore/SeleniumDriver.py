@@ -9,7 +9,7 @@ class SeleniumDriver:
         pass
 
     @staticmethod
-    def get_broswer_by_name(browser_name):
+    def get_browser_by_name(browser_name):
         if browser_name == "firefox":
             return SeleniumDriver.get_firefox_webdriver()
         elif browser_name == "chrome":

@@ -4,7 +4,7 @@ from MainController.Utilities.Log import Log
 from MainController.Utilities.TextActions import TextActions
 
 
-class SharedData:
+class MainProcessSharedDataGroup:
     def __init__(self):
         pass
 

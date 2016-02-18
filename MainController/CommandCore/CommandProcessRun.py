@@ -30,7 +30,7 @@ class CommandProcessRun:
 
         ############################
         ## Gets Test Data Array Here
-
+        my_SuiteFileObject = self.the_MainProcessContextObject
 
         ############################
         ## Navigate To Start Page
@@ -38,7 +38,17 @@ class CommandProcessRun:
         ############################
         ## Run Test Here
         #suiteFileObject.get_command_data_class_list()
-        self.main_test_run_action(web_driver, my_command_data_class_array)
+        web_driver = self.the_MainProcessContextObject.get_web_driver()
+        # here
+        # here
+        # here
+        # here
+        # here
+        # here
+
+        #my_command_data_class_array = my_SuiteFileObject.
+        #self.main_test_run_action(web_driver, my_command_data_class_array)
+
 
     ##########
     #####
@@ -72,5 +82,5 @@ class CommandProcessRun:
     ##########
 
 
-    def run_api_command (self, my_command_data):
+    def run_api_command(self, my_command_data):
         return self.the_CommandProcessActionClass.api_command_consumption(my_command_data)
