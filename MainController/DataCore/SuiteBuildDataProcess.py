@@ -12,6 +12,17 @@ class SuiteBuildDataProcess:
     #####
     ##########
 
-    def get_suite_file_object(self):
-        pass
+
+    def get_suite_file_object_from_data_process(self, test_number):
+        return self.the_SuiteFileObjectShell.get_suite_file_object_at_index(test_number)
         #return self.the_SuiteFileObjectShell.
+
+
+    ##########
+    #####
+    ##
+    #####
+    ##########
+
+    def get_suite_build_data(self):
+        return self.the_SuiteBuildData

@@ -15,6 +15,25 @@ class SuiteBuildData:
         self.suiteFileName = suiteFileName
         self.suiteNumberList = suiteNumberList
 
+
+    ##########
+    #####
+    ## Simple Getters
+    #####
+    ##########
+
+
+    def get_browser_name(self):
+        return self.browserName
+
+
+    ##########
+    #####
+    ## Build SuiteBuildDataProcess from Build Data
+    #####
+    ##########
+
+
     def build_suite_build_data_process(self, my_SuiteBuildData):
         group_name = my_SuiteBuildData.suiteGroup
         file_name = my_SuiteBuildData.suiteFileName

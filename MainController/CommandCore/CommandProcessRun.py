@@ -1,3 +1,4 @@
+from time import sleep
 from MainController.Utilities.Log import Log
 from MainController.Utilities.Constants import Constants
 from MainController.DataCore.CommandDataObject import CommandDataObject
@@ -22,7 +23,7 @@ class CommandProcessRun:
     ##########
 
 
-    def run_action_init(self):
+    def run_action_init(self, test_number):
         Log.log(Constants.STARTING_TEST)
 
         ############################
@@ -30,21 +31,29 @@ class CommandProcessRun:
 
         ############################
         ## Gets Test Data Array Here
-        my_SuiteFileObject = self.the_MainProcessContextObject
+        my_SuiteFileObject = self.the_MainProcessContextObject.get_my_suite_file_object(test_number)
+
+        ############################
+        ## Get Web Driver
+        web_driver = self.the_MainProcessContextObject.get_web_driver()
 
         ############################
         ## Navigate To Start Page
+        base_url = my_SuiteFileObject.get_base_url()
+        print ("base_url :: " + base_url)
+        self.navigate_to_initial_url(web_driver, base_url)
 
         ############################
         ## Run Test Here
         #suiteFileObject.get_command_data_class_list()
-        web_driver = self.the_MainProcessContextObject.get_web_driver()
         # here
         # here
         # here
         # here
         # here
         # here
+
+
 
         #my_command_data_class_array = my_SuiteFileObject.
         #self.main_test_run_action(web_driver, my_command_data_class_array)
@@ -84,3 +93,16 @@ class CommandProcessRun:
 
     def run_api_command(self, my_command_data):
         return self.the_CommandProcessActionClass.api_command_consumption(my_command_data)
+
+
+    ##########
+    #####
+    ## Navigate To URL
+    #####
+    ##########
+
+    @staticmethod
+    def navigate_to_initial_url(web_driver, url):
+        sleep(1)
+        web_driver.get(url)
+        sleep(3)

@@ -1,31 +1,33 @@
 import json
 import time
 import os
-
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
-from MainController.Utilities.Log import Log
-from MainController.Utilities.Constants import Constants
 from MainController.ObserverCore.ObserverService import ObserverService
 from MainController.FileCore.FileService import FileService
+
 from MainController.RunCore.DataClassShell import DataClassShell
 from MainController.RunCore.DataClass import DataClass
-from MainController.DriverCore.SeleniumDriver import SeleniumDriver
-from MainController.Utilities.HttpActions import HttpActions
+
 from MainController.DriverCore.GridActions import GridActions
-from MainController.DataCore.SharedDataActions import SharedDataActions
+from MainController.DriverCore.SeleniumDriver import SeleniumDriver
+
+from MainController.Utilities.HttpActions import HttpActions
 from MainController.Utilities.TextActions import TextActions
+from MainController.Utilities.Log import Log
+from MainController.Utilities.Constants import Constants
+
 from MainController.DataCore.CommandDataObject import CommandDataObject
 from MainController.DataCore.CommandDataClass import CommandDataClass
-from MainController.CommandCore.CommandProcessActionClass import CommandProcessActionClass
+from MainController.DataCore.MainProcessSharedDataGroup import MainProcessSharedDataGroup
+from MainController.DataCore.SuiteBuildData import SuiteBuildData
+from MainController.DataCore.SharedDataActions import SharedDataActions
+from MainController.DataCore.SuiteBuildDataProcess import SuiteBuildDataProcess
 
+from MainController.CommandCore.CommandProcessActionClass import CommandProcessActionClass
 from MainController.CommandCore.CommandProcessRun import CommandProcessRun
 from MainController.CommandCore.MainProcessContextObject import MainProcessContextObject
-from MainController.DataCore.MainProcessSharedDataGroup import MainProcessSharedDataGroup
-
-
-
 
 
 class MainDevelopmentTestRunController:
@@ -173,7 +175,6 @@ class MainDevelopmentTestRunController:
         #Log.log(suite_shell.to_json())
         #file_name = suite_shell.fileName
         #Log.log(file_name)
-
         suite_data_array = FileService.get_suite_data_array_from_shell(suite_shell)
         my_test_data = suite_data_array[0]
         my_suite_name = my_test_data.get_suite_name()
@@ -232,10 +233,8 @@ class MainDevelopmentTestRunController:
         second_class = CommandDataClass("CONSOLE", "two")
         third_class = CommandDataClass("clickElement", "element")
         command_data_class_array = [first_class, second_class, third_class]
-
         my_command_data_object = CommandDataObject(command_data_class_array)
         my_command_data_object.set_current_command_data(third_class)
-
         web_driver = webdriver.Firefox()
         myCommandProcessActionClass = CommandProcessActionClass(web_driver)
         myCommandProcessActionClass.api_command_consumption(my_command_data_object)
@@ -264,12 +263,28 @@ class MainDevelopmentTestRunController:
     def TEST_run_complete_action(self):
         pass
         my_ObserverService = ObserverService()
-        my_MainProcessSharedDataGroup = MainProcessSharedDataGroup()
-        my_MainProcessContextObject = MainProcessContextObject(my_ObserverService, my_MainProcessSharedDataGroup)
+        my_MainProcessSharedDataGroup = MainProcessSharedDataGroup() # has codex
 
+        #shell
+        group_name = "RedditSuite"
+        file_name = "Reddit_Test_Login.json"
+        browser_name = "firefox"
+        my_suite_shell = SharedDataActions.get_suite_shell_from_group_and_file(group_name, file_name)
+        #build data
+        my_SuiteBuildData = SuiteBuildData("testID", "testName", "testDescription", "overRideURL", browser_name, "serviceName", group_name, file_name, "suiteNumberList")
+        #combine
+        my_SuiteBuildDataProcess = SuiteBuildDataProcess(my_SuiteBuildData, my_suite_shell)
+
+        my_MainProcessContextObject = MainProcessContextObject(my_ObserverService, my_MainProcessSharedDataGroup, my_SuiteBuildDataProcess) # has reporter and webdriver
+
+        test_number = 0
         my_CommandProcessRun = CommandProcessRun(my_MainProcessContextObject)
-        my_CommandProcessRun.run_action_init()
+        my_CommandProcessRun.run_action_init(test_number)
 
 
+        #def __init__(self, the_ObserverService, the_MainProcessSharedDataGroup, the_SuiteBuildDataProcess):
+
+        # CommandProcessActionClass
+        # the_MainProcessContextObject
 
 

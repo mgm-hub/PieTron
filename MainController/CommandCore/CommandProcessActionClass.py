@@ -45,6 +45,7 @@ class CommandProcessActionClass:
     def api_CONSOLE(self, my_command_data_object):
         print("console")
 
+
     def api_clickElement(self, my_command_data_object):
         print(" ")
         print("api_clickElement")
