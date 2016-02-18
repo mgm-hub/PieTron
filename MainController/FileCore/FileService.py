@@ -1,16 +1,15 @@
 import os
 import json
 import sys
-from MainController.Utilities.Log import Log
+from collections import OrderedDict
 from MainController.Utilities.Constants import Constants
-from MainController.DataCore.DataClassShell import DataClassShell
-from MainController.DataCore.DataClass import DataClass
+from MainController.RunCore.DataClassShell import DataClassShell
+from MainController.RunCore.DataClass import DataClass
 from MainController.DataCore.WebCodex import WebCodex
 from MainController.DataCore.WebCodexShell import WebCodexShell
 from MainController.DataCore.SuiteFileObjectContent import SuiteFileObjectContent
 from MainController.DataCore.SuiteFileObjectShell import SuiteFileObjectShell
 from MainController.DataCore.SuiteFileObject import SuiteFileObject
-
 
 PATH_SLASH = os.sep
 
@@ -23,7 +22,7 @@ class FileService:
     @staticmethod
     def path_reader(url_path):
         with open(url_path) as json_file:
-            return json.load(json_file)
+            return json.load(json_file, object_pairs_hook=OrderedDict)
 
     @staticmethod
     def get_object_from_path(url_path):

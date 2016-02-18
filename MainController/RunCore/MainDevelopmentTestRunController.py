@@ -1,23 +1,23 @@
 import json
 import time
 import os
-import re
+
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+
 from MainController.Utilities.Log import Log
 from MainController.Utilities.Constants import Constants
 from MainController.ObserverCore.ObserverService import ObserverService
 from MainController.FileCore.FileService import FileService
-from MainController.DataCore.DataClassShell import DataClassShell
-from MainController.DataCore.DataClass import DataClass
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
+from MainController.RunCore.DataClassShell import DataClassShell
+from MainController.RunCore.DataClass import DataClass
 from MainController.DriverCore.SeleniumDriver import SeleniumDriver
 from MainController.Utilities.HttpActions import HttpActions
 from MainController.DriverCore.GridActions import GridActions
-from MainController.DataCore.SharedData import SharedData
+from MainController.DataCore.SharedDataActions import SharedDataActions
 from MainController.Utilities.TextActions import TextActions
 from MainController.DataCore.CommandDataObject import CommandDataObject
 from MainController.DataCore.CommandDataClass import CommandDataClass
-
 from MainController.CommandCore.CommandProcessActionClass import CommandProcessActionClass
 
 
@@ -61,7 +61,10 @@ class MainDevelopmentTestRunController:
         #self.TEST_regex_fix()
         #self.TEST_shared_data()
         #self.TEST_run_suite_by_name()
-        self.TEST_test_run()
+        #self.TEST_test_run_basic()
+        #self.TEST_test_run_advanced()
+        self.TEST_data_converison()
+
 
     ##########
     #####
@@ -141,7 +144,7 @@ class MainDevelopmentTestRunController:
 
 
     def TEST_shared_data_codex_test(self):
-        SharedData.build_codex_data()
+        SharedDataActions.build_codex_data()
 
 
     def TEST_suite_data_directory(self):
@@ -179,10 +182,10 @@ class MainDevelopmentTestRunController:
 
     def TEST_shared_data(self):
         pass
-        suite_files = SharedData.get_test_suite_directory_files()
-        codex_files = SharedData.get_codex_directory_files()
+        suite_files = SharedDataActions.get_test_suite_directory_files()
+        codex_files = SharedDataActions.get_codex_directory_files()
         print(codex_files)
-        suite_data = SharedData.get_suite_data()
+        suite_data = SharedDataActions.get_suite_data()
         first_suite = suite_data[0]
         my_suite_name = first_suite.get_suite_name()
         print(my_suite_name)
@@ -194,13 +197,14 @@ class MainDevelopmentTestRunController:
         group_name = "RedditSuite"
         file_name = "Reddit_Test_Login.json"
         test_number = 0
-        suite_shell = SharedData.get_suite_shell_from_group_and_file(group_name, file_name)
+        suite_shell = SharedDataActions.get_suite_shell_from_group_and_file(group_name, file_name)
         suite_data_array = FileService.get_suite_data_array_from_shell(suite_shell)
         first_suite = suite_data_array[test_number]
         my_suite_name = first_suite.get_suite_name()
         print(my_suite_name)
 
-    def TEST_test_run(self):
+
+    def TEST_test_run_basic(self):
         first_class = CommandDataClass("COMMENT", "one")
         second_class = CommandDataClass("CONSOLE", "two")
         third_class = CommandDataClass("clickElement", "element")
@@ -209,11 +213,34 @@ class MainDevelopmentTestRunController:
         my_command_data_object = CommandDataObject(command_data_class_array)
         my_command_data_object.set_current_command_data(third_class)
 
-        myCommandProcessActionClass = CommandProcessActionClass()
+        web_driver = webdriver.Firefox()
+        myCommandProcessActionClass = CommandProcessActionClass(web_driver)
         myCommandProcessActionClass.api_command_consumption(my_command_data_object)
 
 
+    def TEST_test_run_advanced(self):
+        first_class = CommandDataClass("COMMENT", "one")
+        second_class = CommandDataClass("CONSOLE", "two")
+        third_class = CommandDataClass("clickElement", "element")
+        command_data_class_array = [first_class, second_class, third_class]
 
+        my_command_data_object = CommandDataObject(command_data_class_array)
+        my_command_data_object.set_current_command_data(third_class)
+
+        web_driver = webdriver.Firefox()
+        myCommandProcessActionClass = CommandProcessActionClass(web_driver)
+        myCommandProcessActionClass.api_command_consumption(my_command_data_object)
+
+
+    def TEST_data_converison(self):
+        group_name = "RedditSuite"
+        file_name = "Reddit_Test_Login.json"
+        test_number = 0
+        suite_shell = SharedDataActions.get_suite_shell_from_group_and_file(group_name, file_name)
+        suite_data_array = FileService.get_suite_data_array_from_shell(suite_shell)
+        first_suite = suite_data_array[test_number]
+        command_data_class_array = first_suite.convert_to_command_data_class_array()
+        #print(command_data_class_array[0].api_name)
 
 
 
