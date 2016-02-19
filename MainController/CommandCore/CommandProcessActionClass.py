@@ -1,7 +1,6 @@
 from MainController.Utilities.Log import Log
 from MainController.Utilities.Constants import Constants
-from MainController.DataCore.CommandDataObject import CommandDataObject
-from MainController.CommandCore.APIList import APIList
+from MainController.CommandCore.ActionClasses.APIList import APIList
 
 
 METHOD_PREFIX = "api_"
@@ -33,21 +32,67 @@ class CommandProcessActionClass:
 
     ##########
     #####
-    ## API
+    ## API 1-5
     #####
     ##########
-
-
-    def api_COMMENT(self, my_command_data_object):
-        print("comment")
-
-
-    def api_CONSOLE(self, my_command_data_object):
-        print("console")
-
 
     def api_clickElement(self, my_command_data_object):
         print(" ")
         print("api_clickElement")
         print(my_command_data_object.get_current_command_api_name())
         print(my_command_data_object.get_current_command_api_value())
+
+    def api_elementIsVisible(self, my_command_data_object):
+        pass
+
+    def api_storeWebElementCSSValueToKeyNamed(self, my_command_data_object):
+        pass
+
+    def api_COMMENT(self, my_command_data_object):
+        print("comment")
+
+    def api_CONSOLE(self, my_command_data_object):
+        print("console")
+
+    ##########
+    #####
+    ## API 6-10
+    #####
+    ##########
+
+    def api_finished(self, my_command_data_object):
+        pass
+
+    def api_wait(self, my_command_data_object):
+        pass
+
+    def api_navigateToURL(self, my_command_data_object):
+        pass
+
+    def api_writeToElement(self, my_command_data_object):
+        pass
+
+    def api_storeKeyAndValue(self, my_command_data_object):
+        pass
+
+
+    ##########
+    #####
+    ## API 11-15
+    #####
+    ##########
+
+    def api_clearTextField(self, my_command_data_object):
+        pass
+
+    def api_checkTestCaseWithID(self, my_command_data_object):
+        pass
+
+    def api_failTest(self, my_command_data_object):
+        pass
+
+    def api_writeTapi_closeBrowseroElement(self, my_command_data_object):
+        pass
+
+    def api_breakAndFinishTestNOW(self, my_command_data_object):
+        pass
