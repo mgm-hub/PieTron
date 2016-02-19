@@ -52,12 +52,13 @@ class SuiteFileObject:
 
 
     def convert_to_command_data_class_array(self):
-        print("hhihihi ::: here")
         command_data_class_array = []
-        my_dictionary = OrderedDict(self.commandDataClassList)
-        for item in self.commandDataClassList:
-
-            print (item)
+        for key in self.commandDataClassList:
+            my_api_name = self.commandDataClassList[key][0]
+            my_api_value = self.commandDataClassList[key][1]
+            my_CommandDataClass = CommandDataClass(my_api_name, my_api_value)
+            command_data_class_array.append(my_CommandDataClass)
+            # print (my_api_name +" :: "+my_api_value)
         return command_data_class_array
 
 

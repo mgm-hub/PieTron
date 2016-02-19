@@ -40,12 +40,19 @@ class CommandProcessRun:
         ############################
         ## Navigate To Start Page
         base_url = my_SuiteFileObject.get_base_url()
-        print ("base_url :: " + base_url)
+        #print ("base_url :: " + base_url)
         self.navigate_to_initial_url(web_driver, base_url)
 
         ############################
+        ####convert Data
+        my_command_data_class_array = my_SuiteFileObject.convert_to_command_data_class_array()
+
+        ############################
         ## Run Test Here
-        #suiteFileObject.get_command_data_class_list()
+        self.main_test_run_action(web_driver, my_command_data_class_array)
+        ## Run Test Here
+        ############################
+
         # here
         # here
         # here
@@ -68,11 +75,31 @@ class CommandProcessRun:
 
     def main_test_run_action(self, web_driver, my_command_data_class_array):
 
+        ############################
+        ## Set Test Data
         self.the_CommandDataObject = CommandDataObject(my_command_data_class_array)
         my_count = 0
 
         for my_command_data in my_command_data_class_array:
             pass
+
+            ############################
+            ## Break
+
+            ############################
+            ## Pause
+
+            ############################
+            ## Set Current Case number
+
+            ############################
+            ## Write Console Output
+
+            ############################
+            ## Write time Map
+
+            ############################
+            ## Write Command Log
 
             ############################
             ## RUN TEST HERE !!!
@@ -81,6 +108,8 @@ class CommandProcessRun:
             ## RUN TEST HERE !!!
             ############################
 
+            ############################
+            ## Update Count
             my_count += 1
 
 
@@ -93,6 +122,7 @@ class CommandProcessRun:
 
     def run_api_command(self, my_command_data):
         return self.the_CommandProcessActionClass.api_command_consumption(my_command_data)
+        #returns an int
 
 
     ##########
@@ -104,5 +134,8 @@ class CommandProcessRun:
     @staticmethod
     def navigate_to_initial_url(web_driver, url):
         sleep(1)
-        web_driver.get(url)
+        try:
+            web_driver.get(url)
+        except StandardError:
+            pass
         sleep(3)

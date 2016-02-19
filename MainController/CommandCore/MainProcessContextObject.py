@@ -27,10 +27,7 @@ class MainProcessContextObject:
     ##########
 
     def basic_init(self):
-        print("what")
-        text = self.the_SuiteBuildDataProcess.the_SuiteBuildData.browserName
-        print(text)
-        pass
+
         ##################
         ## Build Reporter
         #reporter here
@@ -40,7 +37,7 @@ class MainProcessContextObject:
         suite_build_data = self.the_SuiteBuildDataProcess.get_suite_build_data()
         browser_name = suite_build_data.get_browser_name()
         self.init_web_driver(browser_name, None)
-        print(browser_name)
+        #print(browser_name)
 
     ##########
     #####
