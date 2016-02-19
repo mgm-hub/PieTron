@@ -1,14 +1,47 @@
 from MainController.Utilities.Log import Log
 from MainController.Utilities.Constants import Constants
 from MainController.CommandCore.ActionClasses.APIList import APIList
+from MainController.CommandCore.ActionClasses.LifeCycleActions import LifeCycleActions
+from MainController.CommandCore.ActionClasses.WebDriverActions import WebDriverActions
+from MainController.CommandCore.ActionClasses.StorageActions import StorageActions
 
 
 METHOD_PREFIX = "api_"
 
 
 class CommandProcessActionClass:
-    def __init__(self, the_WebDriver):
+    the_LifeCycleActions = None
+    the_WebDriverActions = None
+    the_StorageActions = None
+
+    def __init__(self, the_WebDriver, the_MainProcessContextObject):
         self.the_WebDriver = the_WebDriver
+        self.the_MainProcessContextObject = the_MainProcessContextObject
+        ##
+        ##
+        ##
+        self.basic_init()
+
+
+    ##########
+    #####
+    ## Init
+    #####
+    ##########
+
+    def basic_init(self):
+        the_reporter = self.the_MainProcessContextObject.get_the_reporter()
+        the_observer_service = self.the_MainProcessContextObject.get_the_observer_service()
+        self.the_LifeCycleActions = LifeCycleActions(the_reporter, the_observer_service)
+        self.the_WebDriverActions = WebDriverActions(the_reporter, self.the_MainProcessContextObject)
+        self.the_StorageActions = StorageActions(the_reporter)
+
+
+    ##########
+    #####
+    ## Consumption
+    #####
+    ##########
 
     def api_command_consumption(self, the_command_data_object):
         api_name = the_command_data_object.get_current_command_api_name()
@@ -37,10 +70,9 @@ class CommandProcessActionClass:
     ##########
 
     def api_clickElement(self, my_command_data_object):
-        print(" ")
-        print("api_clickElement")
         print(my_command_data_object.get_current_command_api_name())
         print(my_command_data_object.get_current_command_api_value())
+        self.the_WebDriverActions.clickElementAction()
 
     def api_elementIsVisible(self, my_command_data_object):
         pass

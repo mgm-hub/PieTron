@@ -2,10 +2,11 @@ from MainController.CommandCore.ActionClasses.AbstractActions import AbstractAct
 from time import sleep
 
 
-class LifecycleActions(AbstractActions):
+class LifeCycleActions(AbstractActions):
 
-    def __init__(self, the_Reporter):
+    def __init__(self, the_Reporter, the_observer_service):
         AbstractActions.__init__(self, the_Reporter)
+        self.the_observer_service = the_observer_service
 
 
     ##########
@@ -15,25 +16,25 @@ class LifecycleActions(AbstractActions):
     ##########
 
 
-    def comment_action(self):
+    def commentAction(self):
         pass
 
-    def console_action(self, my_CommandDataObject):
+    def consoleAction(self, my_CommandDataObject):
         my_api = my_CommandDataObject.get_current_command_api_value()
         print("   - Console :: " + my_api)
 
-    def finished_action(self, my_CommandDataObject):
+    def finishedAction(self, my_CommandDataObject):
         pass
 
-    def wait_action(self, my_CommandDataObject):
+    def waitAction(self, my_CommandDataObject):
         sleep_time = my_CommandDataObject.get_current_command_api_value()
         sleep(sleep_time)
 
-    def check_test_case_with_id_action(self, my_CommandDataObject):
+    def checkTestCaseWithIDAction(self, my_CommandDataObject):
         my_api = my_CommandDataObject.get_current_command_api_value()
 
-    def fail_test_action(self):
+    def failTestAction(self):
         pass
 
-    def break_and_finish_test_namow_action(self):
+    def breakAndFinishTestNowAction(self):
         pass

@@ -1,4 +1,5 @@
 from MainController.DriverCore.SeleniumDriver import SeleniumDriver
+from MainController.ReportCore.Reporter import Reporter
 
 
 class MainProcessContextObject:
@@ -30,7 +31,7 @@ class MainProcessContextObject:
 
         ##################
         ## Build Reporter
-        #reporter here
+        the_Reporter = Reporter()
 
         ##################
         ## Build Web Driver
@@ -59,14 +60,14 @@ class MainProcessContextObject:
     #####
     ##########
 
-
     def get_web_driver(self):
         return self.the_WebDriver
 
+    def get_the_reporter(self):
+        return self.get_the_reporter
 
-    def get_my_suite_file_object(self, test_number):
-        return self.the_SuiteBuildDataProcess.get_suite_file_object_from_data_process(test_number)
-
+    def get_the_observer_service(self):
+        return self.the_ObserverService
 
     ##########
     #####
@@ -74,6 +75,8 @@ class MainProcessContextObject:
     #####
     ##########
 
+    def get_my_suite_file_object(self, test_number):
+        return self.the_SuiteBuildDataProcess.get_suite_file_object_from_data_process(test_number)
 
     ##########
     #####
